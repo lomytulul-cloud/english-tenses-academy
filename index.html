@@ -275,7 +275,7 @@ function renderGroups() {
 function renderLesson() {
   const item = lessons[currentLesson];
   if (!item) return;
-
+lessonBox.classList.add("show");
   const isArabic = currentLang === "ar";
   const done = completed.includes(item.id);
 
