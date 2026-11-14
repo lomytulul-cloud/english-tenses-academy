@@ -1,422 +1,630 @@
 
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>English Tenses Academy</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#f5f6fa;color:#26354a;font-family:Arial,Tahoma,sans-serif;line-height:1.8}
-header{background:#243b53;color:white;padding:25px 16px;text-align:center}
-header h1{margin:5px;font-size:27px}
-header p{margin:5px;color:#e4edf5}
-button{cursor:pointer;border:0;border-radius:9px;padding:10px 15px;font-size:15px}
+body{margin:0;background:#f4f7fb;color:#26354a;font-family:Arial,Tahoma,sans-serif;line-height:1.7}
+header{background:linear-gradient(135deg,#243b53,#386b78);color:white;text-align:center;padding:28px 16px}
+header h1{margin:8px 0;font-size:30px}
+header p{margin:4px;color:#e5f0f3}
+button{cursor:pointer;border:0;border-radius:10px;padding:11px 16px;font-size:15px}
 #lang{background:white;color:#243b53;font-weight:bold}
-main{max-width:950px;margin:22px auto;padding:0 14px}
-.panel{background:white;border-radius:15px;padding:18px;margin-bottom:18px;box-shadow:0 3px 12px #0000000c}
-h2{color:#243b53}
-.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}
-.group{background:white;padding:15px;border-radius:13px;border:1px solid #e0e6ed}
-.group h3{color:#2a817b;margin-top:0}
-.lesson{display:block;width:100%;text-align:right;margin:7px 0;background:#edf3f7;color:#243b53}
-.lesson:hover{background:#dceeea}
+main{max-width:1050px;margin:22px auto;padding:0 14px}
+.panel{background:white;border-radius:16px;padding:19px;margin-bottom:17px;box-shadow:0 4px 16px #172b4d0b}
+h2,h3{color:#243b53}
+h2{margin-top:0}
+.muted{color:#718096}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.progress{height:10px;background:#e7edf2;border-radius:20px;overflow:hidden;margin-top:10px}
+#bar{height:100%;width:0;background:#2a9d8f;transition:width .3s}
+.groups,.lessonGrid,.parts,.formGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.group{background:white;border:1px solid #dce5ec;text-align:left;color:#243b53;padding:17px}
+.group.active{background:#e3f3ef;border:2px solid #2a9d8f}
+.group strong{display:block;font-size:17px}
+.group small{color:#718096}
+.lessonCard{background:#f8fafc;border:1px solid #e2e8f0;border-radius:13px;padding:14px}
+.lessonCard button{width:100%;margin-top:8px;background:#e8f1f5;color:#243b53}
+.lessonCard button:hover{background:#dceeea}
+.tag{display:inline-block;background:#e3f3ef;color:#17675c;border-radius:20px;padding:3px 10px;font-size:13px}
 #lesson{display:none}
 #lesson.show{display:block}
-.formula{background:#edf3f7;padding:12px;border-radius:9px;direction:ltr;text-align:left;font-weight:bold}
-.example{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #eee;padding:10px 0}
-.english{direction:ltr;text-align:left;font-size:17px}
-.audio{background:#dff2ed;color:#17675c;white-space:nowrap}
-.answer{display:block;width:100%;text-align:left;direction:ltr;background:#edf3f7;color:#243b53;margin:8px 0}
+.sectionTitle{margin:23px 0 8px}
+.formula{display:flex;flex-wrap:wrap;gap:8px;direction:ltr;justify-content:flex-start;margin:12px 0}
+.part{background:#e5f2f2;border:1px solid #c8e2df;border-radius:10px;padding:10px 13px;text-align:center;min-width:100px}
+.part b{display:block;color:#17675c}
+.part small{color:#536777}
+.sample{background:#f7f9fc;border-radius:10px;padding:12px;margin:9px 0}
+.sample .english{font-size:18px;font-weight:bold;direction:ltr;text-align:left}
+.example{border-bottom:1px solid #edf0f3;padding:12px 0}
+.example:last-child{border:0}
+.exampleTop{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.english{direction:ltr;text-align:left}
+.audio{background:#dff2ed;color:#17675c}
 .primary{background:#2a9d8f;color:white}
 .secondary{background:#e8edf2;color:#243b53}
+.answer{display:block;width:100%;text-align:left;direction:ltr;background:#edf3f7;color:#243b53;margin:8px 0}
+.answer:disabled{opacity:1}
+.correct{background:#d9f3e3!important;color:#17643b!important}
+.wrong{background:#fce3df!important;color:#a52f28!important}
 .feedback{font-weight:bold;margin:10px 0}
-.correct{color:green}
-.wrong{color:#bd493c}
-.progress{height:10px;background:#e5eaf0;border-radius:20px;overflow:hidden}
-#bar{height:100%;width:0;background:#2a9d8f}
-footer{text-align:center;padding:20px;color:#718096}
+.note{background:#fff8e7;border-left:4px solid #e5b44c;padding:12px;border-radius:8px}
+.navigation{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.navigation button{flex:1}
+.story{background:#f7f9fc;padding:15px;border-radius:12px;line-height:2}
+.story p{direction:ltr;text-align:left}
+.word{background:#dff2ed;padding:2px 5px;border-radius:4px;font-weight:bold}
+footer{text-align:center;padding:24px;color:#718096}
+.hidden{display:none}
+@media(max-width:520px){header h1{font-size:24px}.panel{padding:15px}.navigation button{padding:10px 7px}}
 </style>
 </head>
 <body>
 <header>
-<button id="lang">English</button>
-<h1 id="heading">أكاديمية الأزمنة الإنجليزية</h1>
-<p id="subtitle">تعلّمي الأزمنة التسعة مع الشرح والأمثلة والتدريبات الصوتية</p>
+<button id="lang">العربية</button>
+<h1 id="heading">English Tenses Academy</h1>
+<p id="subtitle">Understand grammar. Build sentences. Learn with confidence.</p>
 </header>
+
 <main>
 <section class="panel">
-<strong id="progressText">تقدمك في التعلم: 0 من 9 دروس</strong>
+<div class="topline">
+<strong id="progressText">Your learning progress: 0 of 9 lessons</strong>
+<span class="tag" id="level">Beginner friendly</span>
+</div>
 <div class="progress"><div id="bar"></div></div>
 </section>
-<h2 id="choose">اختاري الزمن الذي تريدين تعلمه</h2>
+
+<h2 id="chooseTitle">Choose a tense to learn</h2>
 <div class="groups" id="groups"></div>
+
 <section class="panel" id="lesson">
+<div class="topline">
+<span class="tag" id="lessonNumber"></span>
+<span class="muted" id="lessonGroup"></span>
+</div>
 <h2 id="lessonTitle"></h2>
-<p id="intro"></p>
-<h3 id="useTitle">متى نستخدم هذا الزمن؟</h3>
+<p id="lessonIntro"></p>
+
+<h3 class="sectionTitle" id="ideaTitle">1. Understand the idea</h3>
+<div class="sample">
+<p id="ideaText"></p>
+<p class="english" id="ideaExample"></p>
+<p id="ideaTranslation" class="muted"></p>
+</div>
+
+<h3 class="sectionTitle" id="usageTitle">2. When do we use it?</h3>
 <p id="usage"></p>
-<h3 id="formTitle">تكوين الجملة</h3>
+<p class="muted" id="keywords"></p>
+
+<h3 class="sectionTitle" id="buildTitle">3. Build the sentence step by step</h3>
+<p id="buildIntro"></p>
 <div class="formula" id="formula"></div>
-<p id="note"></p>
-<h3 id="examplesTitle">أمثلة مع النطق</h3>
+<div class="parts" id="parts"></div>
+
+<h3 class="sectionTitle" id="formsTitle">4. Three sentence forms</h3>
+<div class="formGrid" id="forms"></div>
+<p class="note" id="note"></p>
+
+<h3 class="sectionTitle" id="examplesTitle">5. Examples and pronunciation</h3>
 <div id="examples"></div>
-<hr>
-<h3 id="practiceTitle">اختبري فهمك</h3>
+
+<h3 class="sectionTitle" id="practiceTitle">6. Quick practice</h3>
 <p id="question"></p>
 <div id="choices"></div>
 <p id="feedback" class="feedback"></p>
-<button class="primary" id="done">إكمال الدرس</button>
+<button class="secondary" id="tryAgain"></button>
+
+<div class="navigation">
+<button class="secondary" id="previous"></button>
+<button class="primary" id="next"></button>
+</div>
+<div style="margin-top:15px">
+<button class="primary" id="done"></button>
+</div>
+</section>
+
+<section class="panel">
+<h2 id="storyTitle">Learn through a story</h2>
+<p id="storyIntro"></p>
+<div class="story" id="storyText"></div>
+<h3 id="storyQuestionTitle"></h3>
+<p id="storyQuestion"></p>
+<div id="storyChoices"></div>
+<p id="storyFeedback" class="feedback"></p>
 </section>
 </main>
-<footer>English Tenses Academy</footer>
-  
+
+<footer>English Tenses Academy · Learn a little every day</footer>
+
 <script>
 const lessons = [
 {
-id:"present-simple",
-group:"Present",
-name:"Present Simple",
-ar:"المضارع البسيط",
-intro:"نستخدم هذا الزمن للتحدث عن العادات والحقائق والأشياء المتكررة.",
-usage:"العادات اليومية والحقائق والجداول الثابتة. الكلمات الدالة: always, usually, often, every day.",
-formula:"Subject + Verb (s/es with he, she, it)",
-note:"مع he وshe وit نضيف غالبًا s أو es إلى الفعل.",
+id:"present-simple",group:"Present",name:"Present Simple",ar:"المضارع البسيط",
+intro:"We use this tense for habits, routines and facts.",
+introAr:"نستخدم هذا الزمن للتحدث عن العادات والروتين والحقائق.",
+idea:"Think about something you do regularly, not just right now.",
+ideaAr:"تخيلي شيئًا تفعلينه باستمرار، وليس في هذه اللحظة فقط.",
+ideaExample:"She studies English every day.",
+ideaTranslation:"هي تدرس الإنجليزية كل يوم.",
+usage:"Daily habits, repeated actions, facts and routines.",
+usageAr:"العادات اليومية والأفعال المتكررة والحقائق.",
+keywords:"Signal words: always · usually · often · every day",
+keywordsAr:"الكلمات الدالة: always · usually · often · every day",
+parts:[
+["Subject","Who? The person or thing.","الفاعل","من يقوم بالفعل؟"],
+["Verb","What happens? play / plays","الفعل","ماذا يحدث؟ play / plays"],
+["Object","More information: football","المفعول أو التكملة","معلومات إضافية: football"]
+],
+forms:[
+["Positive","She plays football.","She + plays + football","الإثبات","She plays football.","She + plays + football"],
+["Negative","She does not play football.","She + does not + play","النفي","She does not play football.","She + does not + play"],
+["Question","Does she play football?","Does + she + play?","السؤال","Does she play football?","Does + she + play?"]
+],
+formula:"Subject + Verb + Object",
+note:"With he, she and it, we usually add s or es. With does/doesn't, use the base verb: play, not plays.",
+noteAr:"مع he وshe وit نضيف غالبًا s أو es. لكن بعد does أو doesn't نستخدم الفعل الأساسي: play وليس plays.",
 examples:[
 ["She studies English every day.","هي تدرس الإنجليزية كل يوم."],
 ["I drink coffee every morning.","أنا أشرب القهوة كل صباح."],
 ["They play football on Fridays.","هم يلعبون كرة القدم أيام الجمعة."]
 ],
 question:"She _____ English every day.",
-options:["study","studies","studying"],
-answer:"studies",
-explain:"مع She نضيف ies إلى الفعل study."
+options:["study","studies","studying"],answer:"studies",
+explain:"With She, study changes to studies. We change y to ies.",
+explainAr:"مع She تتحول study إلى studies، فنغيّر y إلى ies."
 },
 {
-id:"present-continuous",
-group:"Present",
-name:"Present Continuous",
-ar:"المضارع المستمر",
-intro:"نستخدمه للتعبير عن حدث يحدث الآن أو خلال هذه الفترة.",
-usage:"الأحداث الجارية الآن والمواقف المؤقتة. الكلمات الدالة: now, at the moment, currently.",
+id:"present-continuous",group:"Present",name:"Present Continuous",ar:"المضارع المستمر",
+intro:"We use it for an action happening now or around this time.",
+introAr:"نستخدمه لحدث يحدث الآن أو خلال هذه الفترة.",
+idea:"Imagine an action happening at this moment.",
+ideaAr:"تخيلي فعلًا يحدث في هذه اللحظة.",
+ideaExample:"I am reading now.",
+ideaTranslation:"أنا أقرأ الآن.",
+usage:"Actions happening now and temporary situations.",
+usageAr:"الأحداث الجارية الآن والمواقف المؤقتة.",
+keywords:"Signal words: now · at the moment · currently",
+keywordsAr:"الكلمات الدالة: now · at the moment · currently",
+parts:[
+["Subject","Who? I / He / They","الفاعل","من؟ I / He / They"],
+["am / is / are","The helping verb","الفعل المساعد","الفعل المساعد"],
+["Verb-ing","The action: reading","الفعل مع ing","الفعل: reading"]
+],
 formula:"Subject + am/is/are + Verb-ing",
-note:"نستخدم am مع I، وis مع he/she/it، وare مع you/we/they.",
+forms:[
+["Positive","She is reading.","She + is + reading","الإثبات","She is reading.","She + is + reading"],
+["Negative","She is not reading.","She + is not + reading","النفي","She is not reading.","She + is not + reading"],
+["Question","Is she reading?","Is + she + reading?","السؤال","Is she reading?","Is + she + reading?"]
+],
+note:"Use am with I, is with he/she/it, and are with you/we/they.",
+noteAr:"نستخدم am مع I، وis مع he/she/it، وare مع you/we/they.",
 examples:[
 ["I am reading now.","أنا أقرأ الآن."],
 ["He is cooking dinner.","هو يطبخ العشاء."],
 ["They are studying English.","هم يدرسون الإنجليزية."]
 ],
-question:"They _____ TV now.",
-options:["watch","are watching","watches"],
-answer:"are watching",
-explain:"مع They نستخدم are ثم الفعل مع ing."
+question:"They _____ TV now.",options:["watch","are watching","watches"],answer:"are watching",
+explain:"With They, use are + verb-ing.",explainAr:"مع They نستخدم are ثم الفعل مع ing."
 },
 {
-id:"present-perfect",
-group:"Present",
-name:"Present Perfect",
-ar:"المضارع التام",
-intro:"يربط حدثًا وقع في الماضي بالحاضر، أو يصف تجربة دون تحديد وقتها.",
-usage:"التجارب والنتائج الحالية والأحداث المستمرة منذ الماضي. الكلمات الدالة: already, yet, ever, never, since, for.",
+id:"present-perfect",group:"Present",name:"Present Perfect",ar:"المضارع التام",
+intro:"It connects a past action to the present.",
+introAr:"يربط حدثًا وقع في الماضي بالحاضر.",
+idea:"The action happened before now, and it matters now.",
+ideaAr:"حدث الفعل قبل الآن، لكن له علاقة بالحاضر.",
+ideaExample:"I have finished my work.",
+ideaTranslation:"لقد أنهيت عملي.",
+usage:"Experiences, present results and situations continuing from the past.",
+usageAr:"التجارب والنتائج الحالية والأحداث المستمرة منذ الماضي.",
+keywords:"Signal words: already · yet · ever · never · since · for",
+keywordsAr:"الكلمات الدالة: already · yet · ever · never · since · for",
+parts:[
+["Subject","Who? I / She / We","الفاعل","من؟ I / She / We"],
+["have / has","Helping verb","الفعل المساعد","الفعل المساعد"],
+["Past Participle","Third form: finished / gone","التصريف الثالث","التصريف الثالث: finished / gone"]
+],
 formula:"Subject + have/has + Past Participle",
-note:"نستخدم has مع he/she/it، وhave مع بقية الضمائر.",
+forms:[
+["Positive","She has visited London.","She + has + visited","الإثبات","She has visited London.","She + has + visited"],
+["Negative","She has not visited London.","She + has not + visited","النفي","She has not visited London.","She + has not + visited"],
+["Question","Has she visited London?","Has + she + visited?","السؤال","Has she visited London?","Has + she + visited?"]
+],
+note:"Use has with he/she/it, and have with the other pronouns.",
+noteAr:"نستخدم has مع he/she/it، وhave مع بقية الضمائر.",
 examples:[
 ["I have finished my work.","لقد أنهيت عملي."],
 ["She has visited London.","لقد زارت لندن."],
 ["We have lived here for two years.","نحن نعيش هنا منذ سنتين."]
 ],
-question:"He _____ his homework.",
-options:["has finished","have finished","finishing"],
-answer:"has finished",
-explain:"مع He نستخدم has ثم التصريف الثالث للفعل."
+question:"He _____ his homework.",options:["has finished","have finished","finishing"],answer:"has finished",
+explain:"With He, use has + the third form of the verb.",explainAr:"مع He نستخدم has ثم التصريف الثالث للفعل."
 },
 {
-id:"past-simple",
-group:"Past",
-name:"Past Simple",
-ar:"الماضي البسيط",
-intro:"نستخدمه لحدث بدأ وانتهى في وقت محدد في الماضي.",
-usage:"الأحداث المنتهية. الكلمات الدالة: yesterday, last week, ago, in 2020.",
-formula:"Subject + Verb (Past / V2)",
-note:"الأفعال المنتظمة غالبًا نضيف لها ed، وغير المنتظمة لها تصريف ثانٍ.",
+id:"past-simple",group:"Past",name:"Past Simple",ar:"الماضي البسيط",
+intro:"We use it for an action that started and finished in the past.",
+introAr:"نستخدمه لحدث بدأ وانتهى في الماضي.",
+idea:"The action is finished. It is not happening now.",
+ideaAr:"الحدث انتهى، ولا يحدث الآن.",
+ideaExample:"I watched a movie yesterday.",
+ideaTranslation:"شاهدت فيلمًا أمس.",
+usage:"Finished actions in the past.",
+usageAr:"الأحداث المنتهية في الماضي.",
+keywords:"Signal words: yesterday · last week · ago · in 2020",
+keywordsAr:"الكلمات الدالة: yesterday · last week · ago · in 2020",
+parts:[
+["Subject","Who? I / She / They","الفاعل","من؟ I / She / They"],
+["Past Verb","The second form: watched / went","الفعل الماضي","التصريف الثاني: watched / went"],
+["Object","More information","التكملة","معلومات إضافية"]
+],
+formula:"Subject + Past Verb (V2) + Object",
+forms:[
+["Positive","She visited us.","She + visited","الإثبات","She visited us.","She + visited"],
+["Negative","She did not visit us.","She + did not + visit","النفي","She did not visit us.","She + did not + visit"],
+["Question","Did she visit us?","Did + she + visit?","السؤال","Did she visit us?","Did + she + visit?"]
+],
+note:"Regular verbs often end in ed. Irregular verbs have a special second form. After did/didn't, use the base verb.",
+noteAr:"الأفعال المنتظمة غالبًا نضيف لها ed، وغير المنتظمة لها تصريف ثانٍ خاص. بعد did أو didn't نستخدم الفعل الأساسي.",
 examples:[
 ["I watched a movie yesterday.","شاهدت فيلمًا أمس."],
 ["She went to school.","ذهبت إلى المدرسة."],
 ["They visited us last week.","زارونا الأسبوع الماضي."]
 ],
-question:"We _____ to the park yesterday.",
-options:["go","went","gone"],
-answer:"went",
-explain:"Yesterday تدل على الماضي، والتصريف الثاني من go هو went."
+question:"We _____ to the park yesterday.",options:["go","went","gone"],answer:"went",
+explain:"Yesterday tells us the action is in the past. The past form of go is went.",explainAr:"كلمة yesterday تدل على الماضي، والتصريف الثاني من go هو went."
 },
 {
-id:"past-continuous",
-group:"Past",
-name:"Past Continuous",
-ar:"الماضي المستمر",
-intro:"نستخدمه لحدث كان مستمرًا في وقت معين في الماضي.",
-usage:"حدث مستمر قطعه حدث آخر، أو حدثان مستمران معًا. الكلمات الدالة: while, when.",
+id:"past-continuous",group:"Past",name:"Past Continuous",ar:"الماضي المستمر",
+intro:"We use it for an action that was in progress at a past time.",
+introAr:"نستخدمه لحدث كان مستمرًا في وقت معين في الماضي.",
+idea:"Imagine an action that was happening when something else occurred.",
+ideaAr:"تخيلي فعلًا كان مستمرًا عندما حدث شيء آخر.",
+ideaExample:"I was studying at 8 pm.",
+ideaTranslation:"كنت أدرس الساعة الثامنة مساءً.",
+usage:"An ongoing past action, often interrupted by another action.",
+usageAr:"حدث مستمر قطعه حدث آخر، أو حدثان مستمران معًا.",
+keywords:"Signal words: while · when · at 8 pm",
+keywordsAr:"الكلمات الدالة: while · when · at 8 pm",
+parts:[
+["Subject","Who? I / They","الفاعل","من؟ I / They"],
+["was / were","Helping verb","الفعل المساعد","الفعل المساعد"],
+["Verb-ing","The ongoing action","الفعل مع ing","الفعل المستمر"]
+],
 formula:"Subject + was/were + Verb-ing",
-note:"نستخدم was مع I/he/she/it، وwere مع you/we/they.",
+forms:[
+["Positive","I was sleeping.","I + was + sleeping","الإثبات","I was sleeping.","I + was + sleeping"],
+["Negative","I was not sleeping.","I + was not + sleeping","النفي","I was not sleeping.","I + was not + sleeping"],
+["Question","Was I sleeping?","Was + I + sleeping?","السؤال","Was I sleeping?","Was + I + sleeping?"]
+],
+note:"Use was with I/he/she/it. Use were with you/we/they.",
+noteAr:"نستخدم was مع I/he/she/it، وwere مع you/we/they.",
 examples:[
 ["I was studying at 8 pm.","كنت أدرس الساعة الثامنة مساءً."],
 ["They were playing when it rained.","كانوا يلعبون عندما أمطرت."],
 ["She was cooking while I was reading.","كانت تطبخ بينما كنت أقرأ."]
 ],
-question:"I _____ when you called.",
-options:["was sleeping","were sleeping","slept"],
-answer:"was sleeping",
-explain:"مع I نستخدم was ثم الفعل مع ing."
+question:"I _____ when you called.",options:["was sleeping","were sleeping","slept"],answer:"was sleeping",
+explain:"With I, use was + verb-ing.",explainAr:"مع I نستخدم was ثم الفعل مع ing."
 },
 {
-id:"past-perfect",
-group:"Past",
-name:"Past Perfect",
-ar:"الماضي التام",
-intro:"نستخدمه للتعبير عن حدث وقع قبل حدث آخر في الماضي.",
-usage:"لتوضيح أي الحدثين وقع أولًا. الكلمات الدالة: before, after, by the time, already.",
+id:"past-perfect",group:"Past",name:"Past Perfect",ar:"الماضي التام",
+intro:"We use it for an action that happened before another past action.",
+introAr:"نستخدمه للتعبير عن حدث وقع قبل حدث آخر في الماضي.",
+idea:"Two things happened in the past. This tense shows which happened first.",
+ideaAr:"حدث شيئان في الماضي، وهذا الزمن يوضح أيهما حدث أولًا.",
+ideaExample:"I had eaten before they arrived.",
+ideaTranslation:"كنت قد أكلت قبل وصولهم.",
+usage:"To show which of two past actions happened first.",
+usageAr:"لتوضيح أي الحدثين وقع أولًا.",
+keywords:"Signal words: before · after · by the time · already",
+keywordsAr:"الكلمات الدالة: before · after · by the time · already",
+parts:[
+["Subject","Who? I / She / They","الفاعل","من؟ I / She / They"],
+["had","Helping verb","الفعل المساعد","الفعل المساعد"],
+["Past Participle","Third form: eaten / gone","التصريف الثالث","التصريف الثالث: eaten / gone"]
+],
 formula:"Subject + had + Past Participle",
-note:"نستخدم had مع جميع الضمائر ثم التصريف الثالث للفعل.",
+forms:[
+["Positive","She had left.","She + had + left","الإثبات","She had left.","She + had + left"],
+["Negative","She had not left.","She + had not + left","النفي","She had not left.","She + had not + left"],
+["Question","Had she left?","Had + she + left?","السؤال","Had she left?","Had + she + left?"]
+],
+note:"Use had with all pronouns, followed by the third form of the verb.",
+noteAr:"نستخدم had مع جميع الضمائر، ثم نضع التصريف الثالث للفعل.",
 examples:[
 ["I had eaten before they arrived.","كنت قد أكلت قبل وصولهم."],
 ["She had left when I called.","كانت قد غادرت عندما اتصلت."],
 ["They had finished by noon.","كانوا قد انتهوا بحلول الظهر."]
 ],
-question:"The train _____ before we arrived.",
-options:["left","had left","has left"],
-answer:"had left",
-explain:"مغادرة القطار حدثت قبل وصولنا، لذلك نستخدم الماضي التام."
+question:"The train _____ before we arrived.",options:["left","had left","has left"],answer:"had left",
+explain:"The train left first, so we use the past perfect.",explainAr:"مغادرة القطار حدثت أولًا، لذلك نستخدم الماضي التام."
 },
 {
-id:"future-simple",
-group:"Future",
-name:"Future Simple",
-ar:"المستقبل البسيط",
-intro:"نستخدمه للحديث عن قرارات أو توقعات أو أحداث مستقبلية.",
-usage:"القرارات السريعة والوعود والتوقعات. الكلمات الدالة: tomorrow, next week, soon.",
+id:"future-simple",group:"Future",name:"Future Simple",ar:"المستقبل البسيط",
+intro:"We use it for future decisions, promises and predictions.",
+introAr:"نستخدمه للحديث عن القرارات والوعود والتوقعات المستقبلية.",
+idea:"You are talking about something that will happen later.",
+ideaAr:"أنتِ تتحدثين عن شيء سيحدث لاحقًا.",
+ideaExample:"I will call you tomorrow.",
+ideaTranslation:"سأتصل بك غدًا.",
+usage:"Quick decisions, promises and predictions.",
+usageAr:"القرارات السريعة والوعود والتوقعات.",
+keywords:"Signal words: tomorrow · next week · soon",
+keywordsAr:"الكلمات الدالة: tomorrow · next week · soon",
+parts:[
+["Subject","Who? I / She / They","الفاعل","من؟ I / She / They"],
+["will","Future helping verb","الفعل المساعد للمستقبل","الفعل المساعد للمستقبل"],
+["Base Verb","The original verb: call / go","الفعل الأساسي","الفعل بصيغته الأساسية"]
+],
 formula:"Subject + will + Base Verb",
-note:"will لا تتغير مع الضمائر، ويأتي بعدها الفعل بصيغته الأساسية.",
+forms:[
+["Positive","She will travel.","She + will + travel","الإثبات","She will travel.","She + will + travel"],
+["Negative","She will not travel.","She + will not + travel","النفي","She will not travel.","She + will not + travel"],
+["Question","Will she travel?","Will + she + travel?","السؤال","Will she travel?","Will + she + travel?"]
+],
+note:"Will stays the same with all pronouns. Use the base verb after will.",
+noteAr:"will لا تتغير مع الضمائر، ويأتي بعدها الفعل بصيغته الأساسية.",
 examples:[
 ["I will call you tomorrow.","سأتصل بك غدًا."],
 ["She will help us.","ستساعدنا."],
 ["They will travel next week.","سيسافرون الأسبوع القادم."]
 ],
-question:"She _____ visit us tomorrow.",
-options:["will","will be","is"],
-answer:"will",
-explain:"المستقبل البسيط يتكون من will ثم الفعل الأساسي."
+question:"She _____ visit us tomorrow.",options:["will","will be","is"],answer:"will",
+explain:"Use will + the base verb to talk about the future.",explainAr:"نستخدم will ثم الفعل الأساسي للتحدث عن المستقبل."
 },
 {
-id:"future-continuous",
-group:"Future",
-name:"Future Continuous",
-ar:"المستقبل المستمر",
-intro:"نستخدمه لحدث سيكون مستمرًا في وقت محدد في المستقبل.",
-usage:"لوصف عمل سيكون جاريًا في وقت مستقبلي. الكلمات الدالة: this time tomorrow, at 8 pm.",
+id:"future-continuous",group:"Future",name:"Future Continuous",ar:"المستقبل المستمر",
+intro:"We use it for an action that will be in progress at a future time.",
+introAr:"نستخدمه لحدث سيكون مستمرًا في وقت محدد في المستقبل.",
+idea:"Imagine what you will be doing at a particular time tomorrow.",
+ideaAr:"تخيلي ما ستكونين تفعلينه في وقت محدد غدًا.",
+ideaExample:"I will be working at 9 am.",
+ideaTranslation:"سأكون أعمل الساعة التاسعة صباحًا.",
+usage:"An action that will be happening at a specific future time.",
+usageAr:"وصف عمل سيكون جاريًا في وقت مستقبلي.",
+keywords:"Signal words: this time tomorrow · at 8 pm",
+keywordsAr:"الكلمات الدالة: this time tomorrow · at 8 pm",
+parts:[
+["Subject","Who? I / She / They","الفاعل","من؟ I / She / They"],
+["will be","Helping words","الأفعال المساعدة","الأفعال المساعدة"],
+["Verb-ing","The ongoing action","الفعل مع ing","الفعل المستمر"]
+],
 formula:"Subject + will be + Verb-ing",
-note:"نستخدم will be مع جميع الضمائر ثم الفعل مع ing.",
+forms:[
+["Positive","She will be flying.","She + will be + flying","الإثبات","She will be flying.","She + will be + flying"],
+["Negative","She will not be flying.","She + will not be + flying","النفي","She will not be flying.","She + will not be + flying"],
+["Question","Will she be flying?","Will + she + be + flying?","السؤال","Will she be flying?","Will + she + be + flying?"]
+],
+note:"Use will be with all pronouns, followed by verb-ing.",
+noteAr:"نستخدم will be مع جميع الضمائر، ثم الفعل مع ing.",
 examples:[
 ["I will be working at 9 am.","سأكون أعمل الساعة التاسعة صباحًا."],
 ["She will be flying tomorrow.","ستكون مسافرة بالطائرة غدًا."],
 ["They will be studying tonight.","سيكونون يدرسون الليلة."]
 ],
-question:"At 8 pm, we _____ dinner.",
-options:["will have","will be having","are have"],
-answer:"will be having",
-explain:"الحدث سيكون مستمرًا في وقت محدد بالمستقبل."
+question:"At 8 pm, we _____ dinner.",options:["will have","will be having","are have"],answer:"will be having",
+explain:"The action will be in progress at 8 pm.",explainAr:"الحدث سيكون مستمرًا في وقت محدد بالمستقبل."
 },
 {
-id:"future-perfect",
-group:"Future",
-name:"Future Perfect",
-ar:"المستقبل التام",
-intro:"نستخدمه لحدث سيكون قد اكتمل قبل وقت محدد في المستقبل.",
-usage:"للتعبير عن إنجاز سيكتمل قبل موعد مستقبلي. الكلمات الدالة: by, before, by next year.",
+id:"future-perfect",group:"Future",name:"Future Perfect",ar:"المستقبل التام",
+intro:"We use it for an action that will be completed before a future time.",
+introAr:"نستخدمه لحدث سيكون قد اكتمل قبل وقت محدد في المستقبل.",
+idea:"Think about something that will already be finished by a future deadline.",
+ideaAr:"تخيلي عملًا سيكون قد انتهى قبل موعد مستقبلي.",
+ideaExample:"I will have finished by noon.",
+ideaTranslation:"سأكون قد انتهيت بحلول الظهر.",
+usage:"An achievement completed before a future time.",
+usageAr:"للتعبير عن إنجاز سيكتمل قبل موعد مستقبلي.",
+keywords:"Signal words: by · before · by next year",
+keywordsAr:"الكلمات الدالة: by · before · by next year",
+parts:[
+["Subject","Who? I / She / They","الفاعل","من؟ I / She / They"],
+["will have","Helping words","الأفعال المساعدة","الأفعال المساعدة"],
+["Past Participle","Third form: finished / gone","التصريف الثالث","التصريف الثالث"]
+],
 formula:"Subject + will have + Past Participle",
-note:"نستخدم will have مع جميع الضمائر ثم التصريف الثالث للفعل.",
+forms:[
+["Positive","She will have graduated.","She + will have + graduated","الإثبات","She will have graduated.","She + will have + graduated"],
+["Negative","She will not have graduated.","She + will not have + graduated","النفي","She will not have graduated.","She + will not have + graduated"],
+["Question","Will she have graduated?","Will + she + have + graduated?","السؤال","Will she have graduated?","Will + she + have + graduated?"]
+],
+note:"Use will have with all pronouns, followed by the third form of the verb.",
+noteAr:"نستخدم will have مع جميع الضمائر، ثم التصريف الثالث للفعل.",
 examples:[
 ["I will have finished by noon.","سأكون قد انتهيت بحلول الظهر."],
 ["She will have graduated by June.","ستكون قد تخرجت بحلول يونيو."],
 ["They will have arrived before 7.","سيكونون قد وصلوا قبل السابعة."]
 ],
-question:"By Friday, he _____ the report.",
-options:["will finish","will have finished","has finished"],
-answer:"will have finished",
-explain:"By Friday تعني أن الإنجاز سيكون قد اكتمل قبل ذلك الوقت."
+question:"By Friday, he _____ the report.",options:["will finish","will have finished","has finished"],answer:"will have finished",
+explain:"By Friday means the action will be completed before that time.",explainAr:"By Friday تعني أن الإنجاز سيكون قد اكتمل قبل ذلك الوقت."
 }
 ];
 
-let currentLesson = 0;
-let currentGroup = "Present";
-let currentLang = "ar";
-let completed = JSON.parse(localStorage.getItem("completedTenses") || "[]");
+const stories = {
+en:{
+intro:"Read the short story. Look for verbs and notice when the actions happen.",
+text:'Every morning, Sara <span class="word">wakes up</span> early. She <span class="word">drinks</span> tea and <span class="word">reads</span> a book. Today, she <span class="word">is studying</span> English. Yesterday, she <span class="word">visited</span> her friend. Tomorrow, she <span class="word">will meet</span> her teacher.',
+question:"Which sentence describes a daily habit?",
+options:["She visited her friend.","She drinks tea.","She will meet her teacher."],
+answer:1,explain:"She drinks tea is Present Simple because it describes a daily routine."
+},
+ar:{
+intro:"اقرئي القصة القصيرة. ابحثي عن الأفعال ولاحظي متى تحدث.",
+text:'كل صباح، تستيقظ سارة مبكرًا. تشرب الشاي وتقرأ كتابًا. اليوم، هي تدرس الإنجليزية. أمس، زارت صديقتها. غدًا، ستقابل معلمتها.',
+question:"أي جملة تصف عادة يومية؟",
+options:["زارت صديقتها.","تشرب الشاي.","ستقابل معلمتها."],
+answer:1,explain:"تشرب الشاي تصف عادة متكررة، لذلك نستخدم المضارع البسيط."
+}
+};
 
-const groups = document.getElementById("groups");
-const lessonBox = document.getElementById("lesson");
+let currentLang="en";
+let currentLesson=0;
+let currentGroup="Present";
+let completed=JSON.parse(localStorage.getItem("completedTenses")||"[]");
+let storyAnswered=false;
 
-function renderGroups() {
-  groups.innerHTML = "";
-  ["Present", "Past", "Future"].forEach(group => {
-    const button = document.createElement("button");
-    button.className = "group";
-    button.textContent = group + " Tenses";
-    button.onclick = () => {
-      currentGroup = group;
-      const first = lessons.findIndex(item => item.group === group);
-      currentLesson = first;
-      renderGroups();
-      renderLesson();
-    };
-    if (group === currentGroup) button.classList.add("primary");
-    groups.appendChild(button);
-  });
+const $=id=>document.getElementById(id);
+const isAr=()=>currentLang==="ar";
+const tr=(en,ar)=>isAr()?ar:en;
+
+function updateProgress(){
+$("progressText").textContent=tr("Your learning progress: ","تقدمك في التعلم: ")+completed.length+tr(" of 9 lessons"," من 9 دروس");
+$("bar").style.width=(completed.length/9*100)+"%";
 }
 
-function renderLesson() {
-  const item = lessons[currentLesson];
-  if (!item) return;
-lessonBox.classList.add("show");
-  const isArabic = currentLang === "ar";
-  const done = completed.includes(item.id);
-
-  lessonBox.innerHTML = `
-    <div class="progress">
-      <div id="bar" style="width:${completed.length / lessons.length * 100}%"></div>
-    </div>
-
-    <p>${isArabic ? "الدرس" : "Lesson"} ${currentLesson + 1} / 9</p>
-    <h2>${item.name}</h2>
-    <h3>${isArabic ? item.ar : item.name}</h3>
-
-    <section class="panel">
-      <h3>${isArabic ? "مقدمة" : "Introduction"}</h3>
-      <p>${isArabic ? item.intro : item.name}</p>
-    </section>
-
-    <section class="panel">
-      <h3>${isArabic ? "متى نستخدم هذا الزمن؟" : "When do we use it?"}</h3>
-      <p>${item.usage}</p>
-    </section>
-
-    <section class="panel">
-      <h3>${isArabic ? "التركيب" : "Formula"}</h3>
-      <p><strong>${item.formula}</strong></p>
-      <p>${item.note}</p>
-    </section>
-
-    <section class="panel">
-      <h3>${isArabic ? "أمثلة" : "Examples"}</h3>
-      ${item.examples.map(example => `
-        <div class="example">
-          <p><strong>${example[0]}</strong></p>
-          <p>${isArabic ? example[1] : ""}</p>
-          <button class="audio" onclick="speak('${example[0].replace(/'/g, "\\'")}')">
-            🔊 ${isArabic ? "استمع للنطق" : "Listen"}
-          </button>
-        </div>
-      `).join("")}
-    </section>
-
-    <section class="panel">
-      <h3>${isArabic ? "اختبر فهمك" : "Test your understanding"}</h3>
-      <p>${item.question}</p>
-      <div id="choices">
-        ${item.options.map((option, index) => `
-          <button class="answer" onclick="checkAnswer(${index})">
-            ${option}
-          </button>
-        `).join("")}
-      </div>
-      <p id="feedback" class="feedback"></p>
-    </section>
-
-    <button class="primary" onclick="markDone()">
-      ${done ? (isArabic ? "تم إكمال الدرس ✓" : "Completed ✓") : (isArabic ? "تحديد الدرس كمكتمل" : "Mark as completed")}
-    </button>
-
-    <div class="navigation">
-      <button class="secondary" onclick="previousLesson()">
-        ${isArabic ? "الدرس السابق" : "Previous"}
-      </button>
-      <button class="primary" onclick="nextLesson()">
-        ${isArabic ? "الدرس التالي" : "Next"}
-      </button>
-    </div>
-
-    <p>${isArabic ? "الدروس المكتملة" : "Completed lessons"}: ${completed.length} / 9</p>
-  `;
+function renderGroups(){
+$("groups").innerHTML="";
+["Present","Past","Future"].forEach(group=>{
+const list=lessons.filter(x=>x.group===group);
+const b=document.createElement("button");
+b.className="group"+(currentGroup===group?" active":"");
+b.innerHTML=`<strong>${group} Tenses</strong><small>${tr(group==="Present"?"3 lessons":group==="Past"?"3 lessons":"3 lessons",group==="Present"?"3 دروس":group==="Past"?"3 دروس":"3 دروس")}</small>`;
+b.onclick=()=>{currentGroup=group;renderGroups();};
+$("groups").appendChild(b);
+});
+$("groups").innerHTML += "";
+const list=document.createElement("div");
+list.className="lessonGrid";
+lessons.filter(x=>x.group===currentGroup).forEach(item=>{
+const card=document.createElement("div");
+card.className="lessonCard";
+const done=completed.includes(item.id);
+card.innerHTML=`<span class="tag">${done?"✓ "+tr("Completed","مكتمل"):tr("Lesson","درس")}</span><h3>${item.name}</h3><p>${item.ar}</p>`;
+const b=document.createElement("button");
+b.textContent=tr("Open lesson","افتحي الدرس");
+b.onclick=()=>{currentLesson=lessons.indexOf(item);renderLesson();$("lesson").scrollIntoView({behavior:"smooth"});};
+card.appendChild(b);
+list.appendChild(card);
+});
+$("groups").appendChild(list);
 }
 
-function checkAnswer(selected) {
-  const item = lessons[currentLesson];
-  const feedback = document.getElementById("feedback");
-  const buttons = document.querySelectorAll(".answer");
-
-  buttons.forEach((button, index) => {
-    button.disabled = true;
-    if (index === item.answer) button.classList.add("correct");
-    else if (index === selected) button.classList.add("wrong");
-  });
-
-  if (selected === item.answer) {
-    feedback.textContent = currentLang === "ar"
-      ? "إجابة صحيحة! أحسنتِ 👏"
-      : "Correct answer! Well done!";
-  } else {
-    feedback.textContent = currentLang === "ar"
-      ? "ليست الإجابة الصحيحة. " + item.explain
-      : "Not quite. " + item.explain;
-  }
+function renderLesson(){
+const item=lessons[currentLesson];
+$("lesson").classList.add("show");
+$("lessonNumber").textContent=tr("Lesson ","الدرس ")+(currentLesson+1)+" / 9";
+$("lessonGroup").textContent=item.group+" Tenses";
+$("lessonTitle").textContent=item.name;
+$("lessonIntro").textContent=tr(item.intro,item.introAr);
+$("ideaTitle").textContent=tr("1. Understand the idea","1. افهمي الفكرة");
+$("ideaText").textContent=tr(item.idea,item.ideaAr);
+$("ideaExample").textContent=item.ideaExample;
+$("ideaTranslation").textContent=item.ideaTranslation;
+$("usageTitle").textContent=tr("2. When do we use it?","2. متى نستخدمه؟");
+$("usage").textContent=tr(item.usage,item.usageAr);
+$("keywords").textContent=tr(item.keywords,item.keywordsAr);
+$("buildTitle").textContent=tr("3. Build the sentence step by step","3. ركّبي الجملة خطوة بخطوة");
+$("buildIntro").textContent=tr("A sentence is made of parts. Each part has a job.","تتكون الجملة من أجزاء، ولكل جزء وظيفة.");
+$("formula").innerHTML=item.formula.split(" + ").map(x=>`<span class="part"><b>${x}</b></span>`).join("");
+$("parts").innerHTML=item.parts.map(p=>`<div class="part"><b>${tr(p[0],p[2])}</b><small>${tr(p[1],p[3])}</small></div>`).join("");
+$("formsTitle").textContent=tr("4. Three sentence forms","4. أشكال الجملة الثلاثة");
+$("forms").innerHTML=item.forms.map(f=>`<div class="lessonCard"><span class="tag">${tr(f[0],f[3])}</span><p class="english"><b>${f[1]}</b></p><p class="muted english">${f[2]}</p></div>`).join("");
+$("note").textContent=tr("Remember: "+item.note,"تذكري: "+item.noteAr);
+$("examplesTitle").textContent=tr("5. Examples and pronunciation","5. أمثلة مع النطق");
+$("examples").innerHTML=item.examples.map(e=>`<div class="example"><div class="exampleTop"><b class="english">${e[0]}</b><button class="audio" onclick="speak(${JSON.stringify(e[0])})">🔊 ${tr("Listen","استمعي")}</button></div><p>${e[1]}</p></div>`).join("");
+$("practiceTitle").textContent=tr("6. Quick practice","6. اختبري فهمك");
+$("question").textContent=item.question;
+$("choices").innerHTML=item.options.map((o,i)=>`<button class="answer" onclick="checkAnswer(${i})">${o}</button>`).join("");
+$("feedback").textContent="";
+$("tryAgain").textContent=tr("Try again","حاولي مرة أخرى");
+$("tryAgain").onclick=()=>renderLesson();
+$("previous").textContent=tr("← Previous","السابق →");
+$("next").textContent=tr("Next →","التالي ←");
+$("previous").disabled=currentLesson===0;
+$("next").disabled=currentLesson===8;
+$("previous").onclick=()=>moveLesson(-1);
+$("next").onclick=()=>moveLesson(1);
+$("done").textContent=completed.includes(item.id)?tr("Completed ✓","تم إكمال الدرس ✓"):tr("Mark lesson as completed","تحديد الدرس كمكتمل");
+$("done").onclick=markDone;
+updateProgress();
 }
 
-function markDone() {
-  const id = lessons[currentLesson].id;
-  if (!completed.includes(id)) {
-    completed.push(id);
-    localStorage.setItem("completedTenses", JSON.stringify(completed));
-  }
-  renderLesson();
+function checkAnswer(selected){
+const item=lessons[currentLesson];
+const buttons=document.querySelectorAll("#choices .answer");
+buttons.forEach((b,i)=>{
+b.disabled=true;
+if(item.options[i]===item.answer)b.classList.add("correct");
+if(i===selected&&item.options[i]!==item.answer)b.classList.add("wrong");
+});
+const right=item.options[selected]===item.answer;
+$("feedback").textContent=right?tr("Correct! Well done! 👏","إجابة صحيحة! أحسنتِ 👏"):tr("Not quite. ","ليست الإجابة الصحيحة. ")+(isAr()?item.explainAr:item.explain);
+$("feedback").style.color=right?"#16834a":"#bd493c";
 }
 
-function nextLesson() {
-  if (currentLesson < lessons.length - 1) {
-    currentLesson++;
-    currentGroup = lessons[currentLesson].group;
-    renderGroups();
-    renderLesson();
-  }
+function markDone(){
+const id=lessons[currentLesson].id;
+if(!completed.includes(id)){
+completed.push(id);
+localStorage.setItem("completedTenses",JSON.stringify(completed));
+}
+updateProgress();
+renderGroups();
+renderLesson();
 }
 
-function previousLesson() {
-  if (currentLesson > 0) {
-    currentLesson--;
-    currentGroup = lessons[currentLesson].group;
-    renderGroups();
-    renderLesson();
-  }
+function moveLesson(step){
+currentLesson=Math.max(0,Math.min(8,currentLesson+step));
+currentGroup=lessons[currentLesson].group;
+renderGroups();
+renderLesson();
+$("lesson").scrollIntoView({behavior:"smooth"});
 }
 
-function speak(sentence) {
-  if (!("speechSynthesis" in window)) {
-    alert("Your browser does not support speech.");
-    return;
-  }
-  speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(sentence);
-  utterance.lang = "en-US";
-  utterance.rate = 0.85;
-  speechSynthesis.speak(utterance);
+function speak(sentence){
+if(!("speechSynthesis" in window)){alert("Speech is not supported in this browser.");return;}
+speechSynthesis.cancel();
+const utterance=new SpeechSynthesisUtterance(sentence);
+utterance.lang="en-US";
+utterance.rate=.85;
+speechSynthesis.speak(utterance);
 }
 
-document.getElementById("lang").onclick = function() {
-  currentLang = currentLang === "ar" ? "en" : "ar";
-  this.textContent = currentLang === "ar" ? "English" : "العربية";
-  document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
-  renderLesson();
+function renderStory(){
+const s=stories[currentLang];
+$("storyTitle").textContent=tr("Learn through a story","تعلّمي من خلال قصة");
+$("storyIntro").textContent=s.intro;
+$("storyText").innerHTML=`<p>${s.text}</p>`;
+$("storyQuestionTitle").textContent=tr("Story question","سؤال القصة");
+$("storyQuestion").textContent=s.question;
+$("storyChoices").innerHTML=s.options.map((o,i)=>`<button class="answer" onclick="checkStory(${i})">${o}</button>`).join("");
+$("storyFeedback").textContent="";
+storyAnswered=false;
+}
+
+function checkStory(index){
+if(storyAnswered)return;
+storyAnswered=true;
+const s=stories[currentLang];
+document.querySelectorAll("#storyChoices button").forEach((b,i)=>{
+b.disabled=true;
+if(i===s.answer)b.classList.add("correct");
+if(i===index&&i!==s.answer)b.classList.add("wrong");
+});
+$("storyFeedback").textContent=index===s.answer?tr("Correct! Great reading!","صحيح! قراءة رائعة!"):s.explain;
+}
+
+$("lang").onclick=()=>{
+currentLang=isAr()?"en":"ar";
+document.documentElement.lang=currentLang;
+document.documentElement.dir=isAr()?"rtl":"ltr";
+$("lang").textContent=tr("العربية","English");
+$("subtitle").textContent=tr("Understand grammar. Build sentences. Learn with confidence.","افهمي القواعد، وركّبي الجمل، وتعلّمي بثقة.");
+$("chooseTitle").textContent=tr("Choose a tense to learn","اختاري الزمن الذي تريدين تعلمه");
+$("level").textContent=tr("Beginner friendly","مناسب للمبتدئين");
+renderGroups();
+renderLesson();
+renderStory();
+updateProgress();
 };
 
 renderGroups();
 renderLesson();
+renderStory();
+updateProgress();
 </script>
 </body>
 </html>
