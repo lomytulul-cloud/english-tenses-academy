@@ -60,6 +60,106 @@ h2{margin-top:0}
 footer{text-align:center;padding:24px;color:#718096}
 .hidden{display:none}
 @media(max-width:520px){header h1{font-size:24px}.panel{padding:15px}.navigation button{padding:10px 7px}}
+
+/* ===== COLORFUL MODERN ACADEMY DESIGN ===== */
+
+:root {
+  --purple: #7952d8;
+  --pink: #ec6698;
+  --orange: #ff9b45;
+  --blue: #4b9bea;
+  --green: #35b99a;
+  --yellow: #f4c64e;
+}
+
+body {
+  background: linear-gradient(135deg, #f8f4ff, #fff5f8, #f0f8ff) !important;
+  color: #30334f;
+}
+
+header {
+  background: linear-gradient(120deg, #7050d5, #a15bd6, #e66a9b) !important;
+  color: white !important;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 8px 25px #7952d833;
+  padding: 30px 20px !important;
+}
+
+h1 {
+  color: white !important;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+
+h2 {
+  color: #7451c9;
+  font-weight: 800;
+}
+
+h3 {
+  color: #e15e91;
+  font-weight: 800;
+}
+
+button {
+  background: linear-gradient(120deg, #7952d8, #e66a9b) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 14px !important;
+  padding: 12px 20px !important;
+  font-weight: bold !important;
+  box-shadow: 0 5px 13px #7952d833;
+  transition: .25s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px #7952d844;
+}
+
+.card, .lesson, .quiz, .example, .box {
+  background: white;
+  border-radius: 20px !important;
+  border: 1px solid #eee8ff;
+  box-shadow: 0 7px 22px #55408012;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+input, select {
+  border: 2px solid #e6dcfa !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+}
+
+.correct {
+  background: #d9f8ec !important;
+  color: #16845f !important;
+}
+
+.wrong {
+  background: #ffe1e9 !important;
+  color: #bd3767 !important;
+}
+
+section {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 22px 14px !important;
+  }
+
+  .card, .lesson, .quiz, .example, .box {
+    padding: 15px;
+  }
+
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
 </style>
 </head>
 <body>
