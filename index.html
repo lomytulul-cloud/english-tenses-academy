@@ -1,1 +1,92 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Tenses Academy</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#24344d}
+header{background:#183b56;color:white;padding:25px 15px;text-align:center}
+header h1{font-size:27px}
+header p{color:#dce8f1}
+nav{display:flex;justify-content:space-between;align-items:center;max-width:950px;margin:auto}
+button{border:0;border-radius:10px;padding:12px 16px;cursor:pointer;font-size:15px}
+.lang{background:white;color:#183b56}
+main{max-width:950px;margin:auto;padding:20px 15px}
+.welcome,.quiz{background:white;padding:22px;border-radius:15px;text-align:center;margin-bottom:22px}
+h2{color:#183b56}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{background:white;padding:20px;border-radius:15px;border-top:5px solid #4388bd;box-shadow:0 3px 12px #0001}
+.card:nth-child(2){border-color:#d99b50}
+.card:nth-child(3){border-color:#55a879}
+.card li{line-height:2}
+.card button,.quiz button{background:#183b56;color:white;margin:4px}
+.quiz{background:#e9f1f8;margin-top:25px}
+#result{font-weight:bold}
+footer{text-align:center;padding:20px;color:#64748b}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<strong>📚 English Academy</strong>
+<button class="lang" onclick="toggleLanguage()">English / العربية</button>
+</nav>
+<h1 data-ar="أكاديمية الأزمنة الإنجليزية" data-en="English Tenses Academy">أكاديمية الأزمنة الإنجليزية</h1>
+<p data-ar="تعلمي اللغة الإنجليزية خطوة بخطوة" data-en="Learn English step by step">تعلمي اللغة الإنجليزية خطوة بخطوة</p>
+</header>
+<main>
+<section class="welcome">
+<h2 data-ar="مرحبًا بك في رحلتك التعليمية!" data-en="Welcome to your learning journey!">مرحبًا بك في رحلتك التعليمية!</h2>
+<p data-ar="تعلمي الأزمنة الإنجليزية من خلال الشرح والأمثلة والتدريبات." data-en="Learn English tenses through lessons, examples and exercises.">تعلمي الأزمنة الإنجليزية من خلال الشرح والأمثلة والتدريبات.</p>
+</section>
+<h2 data-ar="اختاري مجموعة الأزمنة" data-en="Choose a tense group">اختاري مجموعة الأزمنة</h2>
+<section class="grid">
+<div class="card">
+<h3>☀️ Present Tenses</h3>
+<p>الأزمنة الحاضرة</p>
+<ul><li>Present Simple</li><li>Present Continuous</li><li>Present Perfect</li></ul>
+<button onclick="alert('دروس الحاضر قريبًا')">ابدئي التعلم</button>
+</div>
+<div class="card">
+<h3>🕰️ Past Tenses</h3>
+<p>الأزمنة الماضية</p>
+<ul><li>Past Simple</li><li>Past Continuous</li><li>Past Perfect</li></ul>
+<button onclick="alert('دروس الماضي قريبًا')">ابدئي التعلم</button>
+</div>
+<div class="card">
+<h3>🚀 Future Tenses</h3>
+<p>الأزمنة المستقبلية</p>
+<ul><li>Future Simple</li><li>Future Continuous</li><li>Future Perfect</li></ul>
+<button onclick="alert('دروس المستقبل قريبًا')">ابدئي التعلم</button>
+</div>
+</section>
+<section class="quiz">
+<h2>اختبري معلوماتك | Test yourself</h2>
+<p>She _____ English every day.</p>
+<button onclick="check(false)">study</button>
+<button onclick="check(true)">studies</button>
+<button onclick="check(false)">studying</button>
+<p id="result"></p>
+</section>
+</main>
+<footer>English Tenses Academy © 2026</footer>
+<script>
+let language="ar";
+function toggleLanguage(){
+language=language==="ar"?"en":"ar";
+document.documentElement.lang=language;
+document.documentElement.dir=language==="ar"?"rtl":"ltr";
+document.querySelectorAll("[data-ar]").forEach(el=>el.textContent=el.dataset[language]);
+}
+function check(correct){
+let r=document.getElementById("result");
+r.textContent=correct?"Correct! إجابة صحيحة 🎉":"Try again! حاولي مرة أخرى.";
+r.style.color=correct?"green":"red";
+}
+</script>
+</body>
+</html>
+
