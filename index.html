@@ -7,86 +7,416 @@
 <title>English Tenses Academy</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#24344d}
-header{background:#183b56;color:white;padding:25px 15px;text-align:center}
-header h1{font-size:27px}
-header p{color:#dce8f1}
-nav{display:flex;justify-content:space-between;align-items:center;max-width:950px;margin:auto}
-button{border:0;border-radius:10px;padding:12px 16px;cursor:pointer;font-size:15px}
-.lang{background:white;color:#183b56}
-main{max-width:950px;margin:auto;padding:20px 15px}
-.welcome,.quiz{background:white;padding:22px;border-radius:15px;text-align:center;margin-bottom:22px}
-h2{color:#183b56}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.card{background:white;padding:20px;border-radius:15px;border-top:5px solid #4388bd;box-shadow:0 3px 12px #0001}
-.card:nth-child(2){border-color:#d99b50}
-.card:nth-child(3){border-color:#55a879}
-.card li{line-height:2}
-.card button,.quiz button{background:#183b56;color:white;margin:4px}
-.quiz{background:#e9f1f8;margin-top:25px}
-#result{font-weight:bold}
-footer{text-align:center;padding:20px;color:#64748b}
+body{margin:0;background:#f5f6fa;color:#26354a;font-family:Arial,Tahoma,sans-serif;line-height:1.8}
+header{background:#243b53;color:white;padding:25px 16px;text-align:center}
+header h1{margin:5px;font-size:27px}
+header p{margin:5px;color:#e4edf5}
+button{cursor:pointer;border:0;border-radius:9px;padding:10px 15px;font-size:15px}
+#lang{background:white;color:#243b53;font-weight:bold}
+main{max-width:950px;margin:22px auto;padding:0 14px}
+.panel{background:white;border-radius:15px;padding:18px;margin-bottom:18px;box-shadow:0 3px 12px #0000000c}
+h2{color:#243b53}
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}
+.group{background:white;padding:15px;border-radius:13px;border:1px solid #e0e6ed}
+.group h3{color:#2a817b;margin-top:0}
+.lesson{display:block;width:100%;text-align:right;margin:7px 0;background:#edf3f7;color:#243b53}
+.lesson:hover{background:#dceeea}
+#lesson{display:none}
+#lesson.show{display:block}
+.formula{background:#edf3f7;padding:12px;border-radius:9px;direction:ltr;text-align:left;font-weight:bold}
+.example{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #eee;padding:10px 0}
+.english{direction:ltr;text-align:left;font-size:17px}
+.audio{background:#dff2ed;color:#17675c;white-space:nowrap}
+.answer{display:block;width:100%;text-align:left;direction:ltr;background:#edf3f7;color:#243b53;margin:8px 0}
+.primary{background:#2a9d8f;color:white}
+.secondary{background:#e8edf2;color:#243b53}
+.feedback{font-weight:bold;margin:10px 0}
+.correct{color:green}
+.wrong{color:#bd493c}
+.progress{height:10px;background:#e5eaf0;border-radius:20px;overflow:hidden}
+#bar{height:100%;width:0;background:#2a9d8f}
+footer{text-align:center;padding:20px;color:#718096}
 </style>
 </head>
 <body>
 <header>
-<nav>
-<strong>📚 English Academy</strong>
-<button class="lang" onclick="toggleLanguage()">English / العربية</button>
-</nav>
-<h1 data-ar="أكاديمية الأزمنة الإنجليزية" data-en="English Tenses Academy">أكاديمية الأزمنة الإنجليزية</h1>
-<p data-ar="تعلمي اللغة الإنجليزية خطوة بخطوة" data-en="Learn English step by step">تعلمي اللغة الإنجليزية خطوة بخطوة</p>
+<button id="lang">English</button>
+<h1 id="heading">أكاديمية الأزمنة الإنجليزية</h1>
+<p id="subtitle">تعلّمي الأزمنة التسعة مع الشرح والأمثلة والتدريبات الصوتية</p>
 </header>
 <main>
-<section class="welcome">
-<h2 data-ar="مرحبًا بك في رحلتك التعليمية!" data-en="Welcome to your learning journey!">مرحبًا بك في رحلتك التعليمية!</h2>
-<p data-ar="تعلمي الأزمنة الإنجليزية من خلال الشرح والأمثلة والتدريبات." data-en="Learn English tenses through lessons, examples and exercises.">تعلمي الأزمنة الإنجليزية من خلال الشرح والأمثلة والتدريبات.</p>
+<section class="panel">
+<strong id="progressText">تقدمك في التعلم: 0 من 9 دروس</strong>
+<div class="progress"><div id="bar"></div></div>
 </section>
-<h2 data-ar="اختاري مجموعة الأزمنة" data-en="Choose a tense group">اختاري مجموعة الأزمنة</h2>
-<section class="grid">
-<div class="card">
-<h3>☀️ Present Tenses</h3>
-<p>الأزمنة الحاضرة</p>
-<ul><li>Present Simple</li><li>Present Continuous</li><li>Present Perfect</li></ul>
-<button onclick="alert('دروس الحاضر قريبًا')">ابدئي التعلم</button>
-</div>
-<div class="card">
-<h3>🕰️ Past Tenses</h3>
-<p>الأزمنة الماضية</p>
-<ul><li>Past Simple</li><li>Past Continuous</li><li>Past Perfect</li></ul>
-<button onclick="alert('دروس الماضي قريبًا')">ابدئي التعلم</button>
-</div>
-<div class="card">
-<h3>🚀 Future Tenses</h3>
-<p>الأزمنة المستقبلية</p>
-<ul><li>Future Simple</li><li>Future Continuous</li><li>Future Perfect</li></ul>
-<button onclick="alert('دروس المستقبل قريبًا')">ابدئي التعلم</button>
-</div>
-</section>
-<section class="quiz">
-<h2>اختبري معلوماتك | Test yourself</h2>
-<p>She _____ English every day.</p>
-<button onclick="check(false)">study</button>
-<button onclick="check(true)">studies</button>
-<button onclick="check(false)">studying</button>
-<p id="result"></p>
+<h2 id="choose">اختاري الزمن الذي تريدين تعلمه</h2>
+<div class="groups" id="groups"></div>
+<section class="panel" id="lesson">
+<h2 id="lessonTitle"></h2>
+<p id="intro"></p>
+<h3 id="useTitle">متى نستخدم هذا الزمن؟</h3>
+<p id="usage"></p>
+<h3 id="formTitle">تكوين الجملة</h3>
+<div class="formula" id="formula"></div>
+<p id="note"></p>
+<h3 id="examplesTitle">أمثلة مع النطق</h3>
+<div id="examples"></div>
+<hr>
+<h3 id="practiceTitle">اختبري فهمك</h3>
+<p id="question"></p>
+<div id="choices"></div>
+<p id="feedback" class="feedback"></p>
+<button class="primary" id="done">إكمال الدرس</button>
 </section>
 </main>
-<footer>English Tenses Academy © 2026</footer>
+<footer>English Tenses Academy</footer>
+  
 <script>
-let language="ar";
-function toggleLanguage(){
-language=language==="ar"?"en":"ar";
-document.documentElement.lang=language;
-document.documentElement.dir=language==="ar"?"rtl":"ltr";
-document.querySelectorAll("[data-ar]").forEach(el=>el.textContent=el.dataset[language]);
+const lessons = [
+{
+id:"present-simple",
+group:"Present",
+name:"Present Simple",
+ar:"المضارع البسيط",
+intro:"نستخدم هذا الزمن للتحدث عن العادات والحقائق والأشياء المتكررة.",
+usage:"العادات اليومية والحقائق والجداول الثابتة. الكلمات الدالة: always, usually, often, every day.",
+formula:"Subject + Verb (s/es with he, she, it)",
+note:"مع he وshe وit نضيف غالبًا s أو es إلى الفعل.",
+examples:[
+["I drink coffee every morning.","أنا أشرب القهوة كل صباح."],
+["She studies English every day.","هي تدرس الإنجليزية كل يوم."],
+["They play football on Fridays.","هم يلعبون كرة القدم أيام الجمعة."]
+],
+question:"She _____ English every day.",
+options:["study","studies","studying"],
+answer:"studies",
+explain:"مع She نضيف ies إلى الفعل study."
+},
+{
+id:"present-continuous",
+group:"Present",
+name:"Present Continuous",
+ar:"المضارع المستمر",
+intro:"نستخدمه للتعبير عن حدث يحدث الآن أو خلال هذه الفترة.",
+usage:"الأحداث الجارية الآن والمواقف المؤقتة. الكلمات الدالة: now, at the moment, currently.",
+formula:"Subject + am/is/are + Verb-ing",
+note:"نستخدم am مع I، وis مع he/she/it، وare مع you/we/they.",
+examples:[
+["I am reading now.","أنا أقرأ الآن."],
+["He is cooking dinner.","هو يطبخ العشاء."],
+["They are studying English.","هم يدرسون الإنجليزية."]
+],
+question:"They _____ TV now.",
+options:["watch","are watching","watches"],
+answer:"are watching",
+explain:"مع They نستخدم are ثم الفعل مع ing."
+},
+{
+id:"present-perfect",
+group:"Present",
+name:"Present Perfect",
+ar:"المضارع التام",
+intro:"يربط حدثًا وقع في الماضي بالحاضر، أو يصف تجربة دون تحديد وقتها.",
+usage:"التجارب والنتائج الحالية والأحداث المستمرة منذ الماضي. الكلمات الدالة: already, yet, ever, never, since, for.",
+formula:"Subject + have/has + Past Participle",
+note:"نستخدم has مع he/she/it، وhave مع بقية الضمائر.",
+examples:[
+["I have finished my work.","لقد أنهيت عملي."],
+["She has visited London.","لقد زارت لندن."],
+["We have lived here for two years.","نحن نعيش هنا منذ سنتين."]
+],
+question:"He _____ his homework.",
+options:["has finished","have finished","finishing"],
+answer:"has finished",
+explain:"مع He نستخدم has ثم التصريف الثالث للفعل."
+},
+{
+id:"past-simple",
+group:"Past",
+name:"Past Simple",
+ar:"الماضي البسيط",
+intro:"نستخدمه لحدث بدأ وانتهى في وقت محدد في الماضي.",
+usage:"الأحداث المنتهية. الكلمات الدالة: yesterday, last week, ago, in 2020.",
+formula:"Subject + Verb (Past / V2)",
+note:"الأفعال المنتظمة غالبًا نضيف لها ed، وغير المنتظمة لها تصريف ثانٍ.",
+examples:[
+["I watched a movie yesterday.","شاهدت فيلمًا أمس."],
+["She went to school.","ذهبت إلى المدرسة."],
+["They visited us last week.","زارونا الأسبوع الماضي."]
+],
+question:"We _____ to the park yesterday.",
+options:["go","went","gone"],
+answer:"went",
+explain:"Yesterday تدل على الماضي، والتصريف الثاني من go هو went."
+},
+{
+id:"past-continuous",
+group:"Past",
+name:"Past Continuous",
+ar:"الماضي المستمر",
+intro:"نستخدمه لحدث كان مستمرًا في وقت معين في الماضي.",
+usage:"حدث مستمر قطعه حدث آخر، أو حدثان مستمران معًا. الكلمات الدالة: while, when.",
+formula:"Subject + was/were + Verb-ing",
+note:"نستخدم was مع I/he/she/it، وwere مع you/we/they.",
+examples:[
+["I was studying at 8 pm.","كنت أدرس الساعة الثامنة مساءً."],
+["They were playing when it rained.","كانوا يلعبون عندما أمطرت."],
+["She was cooking while I was reading.","كانت تطبخ بينما كنت أقرأ."]
+],
+question:"I _____ when you called.",
+options:["was sleeping","were sleeping","slept"],
+answer:"was sleeping",
+explain:"مع I نستخدم was ثم الفعل مع ing."
+},
+{
+id:"past-perfect",
+group:"Past",
+name:"Past Perfect",
+ar:"الماضي التام",
+intro:"نستخدمه للتعبير عن حدث وقع قبل حدث آخر في الماضي.",
+usage:"لتوضيح أي الحدثين وقع أولًا. الكلمات الدالة: before, after, by the time, already.",
+formula:"Subject + had + Past Participle",
+note:"نستخدم had مع جميع الضمائر ثم التصريف الثالث للفعل.",
+examples:[
+["I had eaten before they arrived.","كنت قد أكلت قبل وصولهم."],
+["She had left when I called.","كانت قد غادرت عندما اتصلت."],
+["They had finished by noon.","كانوا قد انتهوا بحلول الظهر."]
+],
+question:"The train _____ before we arrived.",
+options:["left","had left","has left"],
+answer:"had left",
+explain:"مغادرة القطار حدثت قبل وصولنا، لذلك نستخدم الماضي التام."
+},
+{
+id:"future-simple",
+group:"Future",
+name:"Future Simple",
+ar:"المستقبل البسيط",
+intro:"نستخدمه للحديث عن قرارات أو توقعات أو أحداث مستقبلية.",
+usage:"القرارات السريعة والوعود والتوقعات. الكلمات الدالة: tomorrow, next week, soon.",
+formula:"Subject + will + Base Verb",
+note:"will لا تتغير مع الضمائر، ويأتي بعدها الفعل بصيغته الأساسية.",
+examples:[
+["I will call you tomorrow.","سأتصل بك غدًا."],
+["She will help us.","ستساعدنا."],
+["They will travel next week.","سيسافرون الأسبوع القادم."]
+],
+question:"She _____ visit us tomorrow.",
+options:["will","will be","is"],
+answer:"will",
+explain:"المستقبل البسيط يتكون من will ثم الفعل الأساسي."
+},
+{
+id:"future-continuous",
+group:"Future",
+name:"Future Continuous",
+ar:"المستقبل المستمر",
+intro:"نستخدمه لحدث سيكون مستمرًا في وقت محدد في المستقبل.",
+usage:"لوصف عمل سيكون جاريًا في وقت مستقبلي. الكلمات الدالة: this time tomorrow, at 8 pm.",
+formula:"Subject + will be + Verb-ing",
+note:"نستخدم will be مع جميع الضمائر ثم الفعل مع ing.",
+examples:[
+["I will be working at 9 am.","سأكون أعمل الساعة التاسعة صباحًا."],
+["She will be flying tomorrow.","ستكون مسافرة بالطائرة غدًا."],
+["They will be studying tonight.","سيكونون يدرسون الليلة."]
+],
+question:"At 8 pm, we _____ dinner.",
+options:["will have","will be having","are have"],
+answer:"will be having",
+explain:"الحدث سيكون مستمرًا في وقت محدد بالمستقبل."
+},
+{
+id:"future-perfect",
+group:"Future",
+name:"Future Perfect",
+ar:"المستقبل التام",
+intro:"نستخدمه لحدث سيكون قد اكتمل قبل وقت محدد في المستقبل.",
+usage:"للتعبير عن إنجاز سيكتمل قبل موعد مستقبلي. الكلمات الدالة: by, before, by next year.",
+formula:"Subject + will have + Past Participle",
+note:"نستخدم will have مع جميع الضمائر ثم التصريف الثالث للفعل.",
+examples:[
+["I will have finished by noon.","سأكون قد انتهيت بحلول الظهر."],
+["She will have graduated by June.","ستكون قد تخرجت بحلول يونيو."],
+["They will have arrived before 7.","سيكونون قد وصلوا قبل السابعة."]
+],
+question:"By Friday, he _____ the report.",
+options:["will finish","will have finished","has finished"],
+answer:"will have finished",
+explain:"By Friday تعني أن الإنجاز سيكون قد اكتمل قبل ذلك الوقت."
 }
-function check(correct){
-let r=document.getElementById("result");
-r.textContent=correct?"Correct! إجابة صحيحة 🎉":"Try again! حاولي مرة أخرى.";
-r.style.color=correct?"green":"red";
+];
+
+let currentLesson = 0;
+let currentGroup = "Present";
+let currentLang = "ar";
+let completed = JSON.parse(localStorage.getItem("completedTenses") || "[]");
+
+const groups = document.getElementById("groups");
+const lessonBox = document.getElementById("lesson");
+
+function renderGroups() {
+  groups.innerHTML = "";
+  ["Present", "Past", "Future"].forEach(group => {
+    const button = document.createElement("button");
+    button.className = "group";
+    button.textContent = group + " Tenses";
+    button.onclick = () => {
+      currentGroup = group;
+      const first = lessons.findIndex(item => item.group === group);
+      currentLesson = first;
+      renderGroups();
+      renderLesson();
+    };
+    if (group === currentGroup) button.classList.add("primary");
+    groups.appendChild(button);
+  });
 }
+
+function renderLesson() {
+  const item = lessons[currentLesson];
+  if (!item) return;
+
+  const isArabic = currentLang === "ar";
+  const done = completed.includes(item.id);
+
+  lessonBox.innerHTML = `
+    <div class="progress">
+      <div id="bar" style="width:${completed.length / lessons.length * 100}%"></div>
+    </div>
+
+    <p>${isArabic ? "الدرس" : "Lesson"} ${currentLesson + 1} / 9</p>
+    <h2>${item.name}</h2>
+    <h3>${isArabic ? item.ar : item.name}</h3>
+
+    <section class="panel">
+      <h3>${isArabic ? "مقدمة" : "Introduction"}</h3>
+      <p>${isArabic ? item.intro : item.name}</p>
+    </section>
+
+    <section class="panel">
+      <h3>${isArabic ? "متى نستخدم هذا الزمن؟" : "When do we use it?"}</h3>
+      <p>${item.usage}</p>
+    </section>
+
+    <section class="panel">
+      <h3>${isArabic ? "التركيب" : "Formula"}</h3>
+      <p><strong>${item.formula}</strong></p>
+      <p>${item.note}</p>
+    </section>
+
+    <section class="panel">
+      <h3>${isArabic ? "أمثلة" : "Examples"}</h3>
+      ${item.examples.map(example => `
+        <div class="example">
+          <p><strong>${example[0]}</strong></p>
+          <p>${isArabic ? example[1] : ""}</p>
+          <button class="audio" onclick="speak('${example[0].replace(/'/g, "\\'")}')">
+            🔊 ${isArabic ? "استمع للنطق" : "Listen"}
+          </button>
+        </div>
+      `).join("")}
+    </section>
+
+    <section class="panel">
+      <h3>${isArabic ? "اختبر فهمك" : "Test your understanding"}</h3>
+      <p>${item.question}</p>
+      <div id="choices">
+        ${item.options.map((option, index) => `
+          <button class="answer" onclick="checkAnswer(${index})">
+            ${option}
+          </button>
+        `).join("")}
+      </div>
+      <p id="feedback" class="feedback"></p>
+    </section>
+
+    <button class="primary" onclick="markDone()">
+      ${done ? (isArabic ? "تم إكمال الدرس ✓" : "Completed ✓") : (isArabic ? "تحديد الدرس كمكتمل" : "Mark as completed")}
+    </button>
+
+    <div class="navigation">
+      <button class="secondary" onclick="previousLesson()">
+        ${isArabic ? "الدرس السابق" : "Previous"}
+      </button>
+      <button class="primary" onclick="nextLesson()">
+        ${isArabic ? "الدرس التالي" : "Next"}
+      </button>
+    </div>
+
+    <p>${isArabic ? "الدروس المكتملة" : "Completed lessons"}: ${completed.length} / 9</p>
+  `;
+}
+
+function checkAnswer(selected) {
+  const item = lessons[currentLesson];
+  const feedback = document.getElementById("feedback");
+  const buttons = document.querySelectorAll(".answer");
+
+  buttons.forEach((button, index) => {
+    button.disabled = true;
+    if (index === item.answer) button.classList.add("correct");
+    else if (index === selected) button.classList.add("wrong");
+  });
+
+  if (selected === item.answer) {
+    feedback.textContent = currentLang === "ar"
+      ? "إجابة صحيحة! أحسنتِ 👏"
+      : "Correct answer! Well done!";
+  } else {
+    feedback.textContent = currentLang === "ar"
+      ? "ليست الإجابة الصحيحة. " + item.explain
+      : "Not quite. " + item.explain;
+  }
+}
+
+function markDone() {
+  const id = lessons[currentLesson].id;
+  if (!completed.includes(id)) {
+    completed.push(id);
+    localStorage.setItem("completedTenses", JSON.stringify(completed));
+  }
+  renderLesson();
+}
+
+function nextLesson() {
+  if (currentLesson < lessons.length - 1) {
+    currentLesson++;
+    currentGroup = lessons[currentLesson].group;
+    renderGroups();
+    renderLesson();
+  }
+}
+
+function previousLesson() {
+  if (currentLesson > 0) {
+    currentLesson--;
+    currentGroup = lessons[currentLesson].group;
+    renderGroups();
+    renderLesson();
+  }
+}
+
+function speak(sentence) {
+  if (!("speechSynthesis" in window)) {
+    alert("Your browser does not support speech.");
+    return;
+  }
+  speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(sentence);
+  utterance.lang = "en-US";
+  utterance.rate = 0.85;
+  speechSynthesis.speak(utterance);
+}
+
+document.getElementById("lang").onclick = function() {
+  currentLang = currentLang === "ar" ? "en" : "ar";
+  this.textContent = currentLang === "ar" ? "English" : "العربية";
+  document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+  renderLesson();
+};
+
+renderGroups();
+renderLesson();
 </script>
 </body>
 </html>
-
