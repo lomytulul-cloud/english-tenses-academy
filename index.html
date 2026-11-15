@@ -6,6 +6,284 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>English Tenses Academy</title>
 <style>
+  
+/* ===== ENGLISH ACADEMY: CREATIVE EDITION ===== */
+
+body {
+  background:
+    radial-gradient(circle at 5% 10%, #ffe0ef 0, transparent 25%),
+    radial-gradient(circle at 95% 30%, #dceeff 0, transparent 25%),
+    linear-gradient(135deg,#fbf8ff,#f4faff,#fff8f2) !important;
+  color: #343052 !important;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+header {
+  position: relative;
+  overflow: hidden;
+  padding: 45px 20px !important;
+  border-radius: 0 0 38px 38px;
+  background: linear-gradient(120deg,#6246d9,#9856d8,#ed6b9c,#ffad65) !important;
+  box-shadow: 0 12px 30px #7653c533;
+}
+
+header::before,
+header::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: #ffffff20;
+  pointer-events: none;
+}
+
+header::before {
+  width: 180px;
+  height: 180px;
+  top: -80px;
+  left: 8%;
+}
+
+header::after {
+  width: 120px;
+  height: 120px;
+  bottom: -65px;
+  right: 10%;
+}
+
+header h1 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(27px,5vw,42px) !important;
+  text-shadow: 0 3px 10px #39206a55;
+}
+
+header p {
+  position: relative;
+  z-index: 1;
+  font-size: 16px;
+}
+
+main {
+  max-width: 1050px !important;
+  margin: 30px auto !important;
+}
+
+main > h2 {
+  font-size: 25px;
+  text-align: center;
+  color: #7650ce !important;
+  margin: 28px 0 20px;
+}
+
+.panel {
+  background: #ffffffed !important;
+  border: 1px solid #eee5ff;
+  border-radius: 23px !important;
+  padding: 23px !important;
+  margin-bottom: 22px !important;
+  box-shadow: 0 9px 25px #57418b12 !important;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.panel:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 13px 30px #57418b20 !important;
+}
+
+.groups {
+  gap: 18px !important;
+  margin: 20px 0 30px;
+}
+
+.groups .group {
+  min-height: 125px;
+  border: 0 !important;
+  border-radius: 22px !important;
+  color: white !important;
+  font-size: 20px !important;
+  font-weight: 900;
+  text-align: center;
+  box-shadow: 0 9px 20px #49376b20;
+  transition: transform .25s, filter .25s;
+}
+
+.groups .group:nth-child(1) {
+  background: linear-gradient(135deg,#7555dc,#aa70ec) !important;
+}
+
+.groups .group:nth-child(2) {
+  background: linear-gradient(135deg,#16a99d,#53cdb3) !important;
+}
+
+.groups .group:nth-child(3) {
+  background: linear-gradient(135deg,#f18a42,#ffc15d) !important;
+}
+
+.groups .group:hover {
+  transform: translateY(-7px) scale(1.025);
+  filter: brightness(1.06);
+}
+
+.groups .group.primary {
+  outline: 4px solid #f3d5ff;
+  outline-offset: 3px;
+}
+
+#lesson.show {
+  display: block;
+  animation: appear .5s ease;
+}
+
+@keyframes appear {
+  from {opacity:0; transform:translateY(15px)}
+  to {opacity:1; transform:translateY(0)}
+}
+
+#lesson > h2 {
+  color: #7552d4;
+  font-size: 30px;
+}
+
+#lesson > h3,
+.panel h3 {
+  color: #d85d98 !important;
+}
+
+#lesson .panel:nth-of-type(1) {
+  border-left: 6px solid #9b6be3;
+  background: linear-gradient(110deg,#f5edff,#ffffff) !important;
+}
+
+#lesson .panel:nth-of-type(2) {
+  border-left: 6px solid #20b5a3;
+  background: linear-gradient(110deg,#e8fbf6,#ffffff) !important;
+}
+
+#lesson .panel:nth-of-type(3) {
+  border-left: 6px solid #f5a33d;
+  background: linear-gradient(110deg,#fff4df,#ffffff) !important;
+}
+
+#lesson .panel:nth-of-type(4) {
+  border-left: 6px solid #e76a9c;
+  background: linear-gradient(110deg,#fff0f5,#ffffff) !important;
+}
+
+#lesson .panel:nth-of-type(5) {
+  border-left: 6px solid #4b9bea;
+  background: linear-gradient(110deg,#edf6ff,#ffffff) !important;
+}
+
+.example {
+  padding: 14px !important;
+  margin: 10px 0;
+  border: 1px solid #eee5ff !important;
+  border-radius: 15px;
+  background: #ffffff !important;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 12px #57418b0b;
+}
+
+.example p:first-child {
+  color: #6246c5;
+  font-size: 17px;
+}
+
+.audio {
+  background: #e5f8f4 !important;
+  color: #168879 !important;
+  border-radius: 12px !important;
+}
+
+.answer {
+  background: #f0eaff !important;
+  color: #6746bd !important;
+  border: 2px solid transparent !important;
+  border-radius: 14px !important;
+  padding: 14px !important;
+  transition: .2s;
+}
+
+.answer:hover:not(:disabled) {
+  background: #e4d7ff !important;
+  border-color: #9770e5 !important;
+  transform: translateX(-3px);
+}
+
+.answer.correct {
+  background: #d9f8e9 !important;
+  color: #137b55 !important;
+  border: 2px solid #46c58b !important;
+}
+
+.answer.wrong {
+  background: #ffe3eb !important;
+  color: #bd3767 !important;
+  border: 2px solid #ef8ca9 !important;
+}
+
+.primary {
+  background: linear-gradient(110deg,#7551d7,#df68a1) !important;
+  color: white !important;
+  border-radius: 14px !important;
+}
+
+.secondary {
+  background: #e9e2fa !important;
+  color: #6848bd !important;
+  border-radius: 14px !important;
+}
+
+.navigation {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.navigation button {
+  flex: 1;
+}
+
+.progress {
+  height: 13px !important;
+  background: #e9e1f7 !important;
+  border-radius: 30px !important;
+  overflow: hidden;
+}
+
+#bar {
+  background: linear-gradient(90deg,#22bda5,#6d9bea,#a66be5,#ed6b9c) !important;
+  border-radius: 30px;
+  transition: width .5s ease;
+}
+
+#feedback {
+  padding: 12px;
+  border-radius: 12px;
+}
+
+footer {
+  background: linear-gradient(100deg,#7250d3,#df699d);
+  color: white !important;
+  border-radius: 25px 25px 0 0;
+  padding: 25px !important;
+}
+
+button {
+  transition: all .22s ease;
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+@media(max-width:600px) {
+  header { padding: 35px 15px !important; }
+  .groups .group { min-height: 95px; }
+  .panel { padding: 16px !important; }
+  .navigation { flex-direction: column; }
+}
+
 *{box-sizing:border-box}
 body{margin:0;background:#f4f7fb;color:#26354a;font-family:Arial,Tahoma,sans-serif;line-height:1.7}
 header{background:linear-gradient(135deg,#243b53,#386b78);color:white;text-align:center;padding:28px 16px}
