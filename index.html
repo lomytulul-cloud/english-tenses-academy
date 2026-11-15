@@ -950,16 +950,40 @@ currentGroup=lessons[currentLesson].group;
 renderGroups();
 renderLesson();
 $("lesson").scrollIntoView({behavior:"smooth"});
+
+
+function speak(sentence) {
+  if (!("speechSynthesis" in window)) {
+    alert("Your browser does not support speech.");
+    return;
+  }
+
+  const synth = window.speechSynthesis;
+  synth.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(sentence);
+
+  utterance.lang = "en-US";
+  utterance.rate = 0.85;
+  utterance.pitch = 1;
+  utterance.volume = 1;
+
+  const voices = synth.getVoices();
+  const englishVoice = voices.find(voice =>
+    voice.lang === "en-US"
+  );
+
+  if (englishVoice) {
+    utterance.voice = englishVoice;
+  }
+
+  utterance.onerror = function(event) {
+    console.error("Speech error:", event.error);
+  };
+
+  synth.speak(utterance);
 }
 
-function speak(sentence){
-if(!("speechSynthesis" in window)){alert("Speech is not supported in this browser.");return;}
-speechSynthesis.cancel();
-const utterance=new SpeechSynthesisUtterance(sentence);
-utterance.lang="en-US";
-utterance.rate=.85;
-speechSynthesis.speak(utterance);
-}
 
 function renderStory(){
 const s=stories[currentLang];
